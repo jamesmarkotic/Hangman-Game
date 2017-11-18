@@ -1,20 +1,20 @@
-var hangWords = ['stairway to heaven' , 'black dog' , 'the ocean' , 'whole lotta love']
+var hangWords = ['stairwaytoheaven' , 'blackdog' , 'theocean' , 'wholelottalove']
 
 var wins = 0;
 
 
 // Game Rules
-
-// Function to randomly pull words from array.
-function () {
-	return hangWords[Math.floor(Math.random() * hangWords.length)];
-}
-
+var test = hangWords[Math.floor(Math.random() * hangWords.length)];
+console.log(test);
 // Display "_" for unguessed word
-
+function displayBlank () {
+	document.getElementById('currWord').document.write('hangWords[i]');
+}
 // Main Function
 // Code for key press to start game
 
 document.onkeyup = function (event) {
-	if ()
+	// wordChoice();
 };
+
+// wordChoice();
