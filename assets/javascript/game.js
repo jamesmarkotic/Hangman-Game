@@ -10,18 +10,16 @@
 
 
 
-
-
-window.onload = function start () {
+window.onload = function() {
 
 // Creating Variables
 var hangWords = ['jimmy' , 'john' , 'jason' , 'robert']
-var wins = 0;
 var guesses = 9;
 var underScore = [];
 var correct = [];
 var incorrect = [];
 var letterOccur = 0;
+var wins;
 var rand = hangWords[Math.floor(Math.random() * hangWords.length)];
 var noUnderScore;
 console.log(rand);
@@ -83,23 +81,19 @@ console.log(guesses)
 				}
 				correct = [];
 			}
-	// Wrap win condition somehow 
+	// Wrap win condition somehow
 
-	
+
 	// Incorrect Guess
 		else if (guesses > 0){
-			incorrect.push(pressedKey);
-			console.log(incorrect);
+		  incorrect.push(pressedKey);
+		  console.log(incorrect);
 		}
 
 		if (guesses < 1) {
-			window.alert('YOU LOOOOOOSE, you loser, you!')
-			window.location.reload();
+				window.alert('YOU LOOOOOOSE, you loser, you!')
+				window.location.reload();
 		}
-
-
-
-		// console.log(noUnderScore)
 
 		//convert array to comma separated string
 		rawRightText = underScore.toString()
@@ -108,17 +102,18 @@ console.log(guesses)
 		//take the variable with string, and replace commas with spaces, clean up
 		prettyRightText = rawRightText.replace(/,/g, " ")
 		prettyWrongText = rawWrongText.replace(/,/g, ", ")
-		
+
 		noUnderScore = prettyRightText.indexOf('_');
 		if ((guesses > 0) && (noUnderScore < 0)) {
 			window.alert('You windsfafasdfds. Congrats')
-			location.reload();
+			window.location.reload();
 		}
-		
+
 		console.log(prettyRightText)
 		console.log(prettyWrongText)
-
+		document.getElementById("currWord").innerHTML= prettyRightText;
+		document.getElementById("guessLeft").innerHTML= guesses;
+		document.getElementById("guessed").innerHTML= prettyWrongText;
 	});
-
 
 };
