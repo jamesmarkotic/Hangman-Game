@@ -6,7 +6,7 @@
 // 5. Check if guess is right
 // 6. If right, push letter to the correct array
 // 7. If wrong, push letter to the wrong array
-// 8. 
+// 8.
 
 
 
@@ -23,6 +23,7 @@ var correct = [];
 var incorrect = [];
 var letterOccur = 0;
 var rand = hangWords[Math.floor(Math.random() * hangWords.length)];
+var noUnderScore;
 console.log(rand);
 
 // Display "_" for unguessed word
@@ -38,6 +39,8 @@ console.log(displayBlank ());
 // Checking for keypress and updating corresponding arrays
 document.addEventListener('keypress', function () {
 var pressedKey = String.fromCharCode(event.keyCode);
+guesses --;
+console.log(guesses)
 //m
 
 //Looks into value in rand (), gets index of user key press
@@ -46,7 +49,7 @@ var pressedKey = String.fromCharCode(event.keyCode);
 	if (rand.indexOf(pressedKey) > -1) {
 	//if (rand.indexOf(m) > -1) {
 	//if (2 > -1) {
-		
+
 		//correct is variable containing the array that stores underscores "_ _ _ _"
 		//push will commit a change to a underscore with the correct keypress
 		// correct.push(pressedKey);
@@ -58,7 +61,7 @@ var pressedKey = String.fromCharCode(event.keyCode);
 				//01234
 				//Jimmy
 				// Correct Guess
-				for(var i=0; i<rand.length;i++) {
+			for (var i=0; i<rand.length;i++) {
 					// 	i				===	j	then
 					if (rand[i] === pressedKey) {
 						//				=	_ _ _ _ _ _ random.indexOf(J) = 0
@@ -70,8 +73,7 @@ var pressedKey = String.fromCharCode(event.keyCode);
 					letterOccur = correct.length;
 				}
 				console.log(correct)
-				console.log(letterOccur)
-				
+
 			for (var i = 0; i < letterOccur; i++) {
 					// 				2			= correct [0]
 					var correctIndex = correct[i]
@@ -79,29 +81,40 @@ var pressedKey = String.fromCharCode(event.keyCode);
 					console.log(pressedKey)
 					console.log(underScore)
 				}
-				correct = []
-
+				correct = [];
 			}
+	// Wrap win condition somehow 
+
+	
 	// Incorrect Guess
 		else if (guesses > 0){
-		  incorrect.push(pressedKey);
-		  console.log(incorrect);
-			guesses --;
-			console.log(guesses);
-			if (guesses < 1) {
-				console.log('YOU LOOOOOOSE!')
-			}
-
+			incorrect.push(pressedKey);
+			console.log(incorrect);
 		}
-		
+
+		if (guesses < 1) {
+			window.alert('YOU LOOOOOOSE, you loser, you!')
+			window.location.reload();
+		}
+
+
+
+		// console.log(noUnderScore)
+
 		//convert array to comma separated string
 		rawRightText = underScore.toString()
 		rawWrongText = incorrect.toString()
 
-		//take the variable with string, and replace commas with spaces
+		//take the variable with string, and replace commas with spaces, clean up
 		prettyRightText = rawRightText.replace(/,/g, " ")
-		prettyWrongText = rawWrongText.replace(/,/g, " ")
-
+		prettyWrongText = rawWrongText.replace(/,/g, ", ")
+		
+		noUnderScore = prettyRightText.indexOf('_');
+		if ((guesses > 0) && (noUnderScore < 0)) {
+			window.alert('You windsfafasdfds. Congrats')
+			location.reload();
+		}
+		
 		console.log(prettyRightText)
 		console.log(prettyWrongText)
 
