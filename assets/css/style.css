@@ -26,6 +26,6 @@ p, h1, h2, h3 {
 /*Body CSS*/
 
 .column1, .column2 {
-	height: 550px;
-	padding: 20px;
+	height: auto;
+	padding: 40px;
 }
