@@ -12,7 +12,7 @@
 
 
 
-window.onload = function () {
+window.onload = function start () {
 
 // Creating Variables
 var hangWords = ['jimmy' , 'john' , 'jason' , 'robert']
